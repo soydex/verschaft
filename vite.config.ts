@@ -5,7 +5,6 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig(({ mode }) => {
     return {
-      base: '/verschaft/',
       plugins: [react(), tailwindcss()],
       resolve: {
         alias: {
