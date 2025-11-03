@@ -70,6 +70,10 @@ const Hero: React.FC = () => {
         >
           <motion.a
             href="#waitlist"
+            onClick={(e) => {
+              alert("Waitlist is currently closed.");
+              e.preventDefault();
+            }}
             className="font-urbanist text-lg font-semibold text-zinc-900 bg-gradient-to-r from-[#A16EFF] via-[#60F9B8] to-[#00B8FF] px-8 py-4 rounded-full shadow-lg"
             whileHover={{ 
               scale: 1.05,
