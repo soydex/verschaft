@@ -5,12 +5,26 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Verschafft - Your Personal Metaverse</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&family=Space+Grotesk:wght@500;700&family=Urbanist:wght@600&display=swap" rel="stylesheet">
+    <title>Verschaft - Your Personal Metaverse</title>
     <style>
+      @font-face {
+        font-family: 'Manrope';
+        font-style: normal;
+        font-weight: 400 700;
+        src: url('/fonts/manrope-latin.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Space Grotesk';
+        font-style: normal;
+        font-weight: 500 700;
+        src: url('/fonts/spacegrotesk-latin.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Urbanist';
+        font-style: normal;
+        font-weight: 600;
+        src: url('/fonts/urbanist-latin.woff2') format('woff2');
+      }
       body {
         font-family: 'Manrope', sans-serif;
         background-color: #27272A; /* zinc-800 */
@@ -24,7 +38,6 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        text-fill-color: transparent;
       }
       .glass-card {
         background: rgba(255, 255, 255, 0.05);

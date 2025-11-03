@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const CubeIcon = () => (
   <svg
@@ -76,6 +77,30 @@ const features = [
   },
 ];
 
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3
+    }
+  }
+};
+
+const item = {
+  hidden: { opacity: 0, y: 50 },
+  show: { 
+    opacity: 1, 
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 12
+    }
+  }
+};
+
 const Features: React.FC = () => {
   return (
     <section id="features" className="py-20 relative">
@@ -93,22 +118,57 @@ const Features: React.FC = () => {
           }
         `}</style>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+      <motion.div 
+        className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10"
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+      >
         {features.map((feature, index) => (
-          <div
+          <motion.div
             key={index}
-            className="glass-card rounded-2xl p-8 text-center transition-all duration-300 hover:border-cyan-400/50 hover:scale-105"
+            className="glass-card rounded-2xl p-8 text-center"
+            variants={item}
+            whileHover={{ 
+              scale: 1.05,
+              borderColor: "rgba(34, 211, 238, 0.5)",
+              transition: { type: "spring", stiffness: 400, damping: 17 }
+            }}
           >
-            <div className="inline-block p-4 bg-white/10 rounded-full mb-6 text-gradient">
+            <motion.div 
+              className="inline-block p-4 bg-white/10 rounded-full mb-6 text-gradient"
+              whileHover={{ 
+                rotate: 360,
+                scale: 1.1
+              }}
+              transition={{ 
+                type: "spring", 
+                stiffness: 200,
+                damping: 10 
+              }}
+            >
               {feature.icon}
-            </div>
-            <h3 className="font-space-grotesk text-2xl font-bold text-white mb-3">
+            </motion.div>
+            <motion.h3 
+              className="font-space-grotesk text-2xl font-bold text-white mb-3"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.2 + index * 0.1 }}
+            >
               {feature.title}
-            </h3>
-            <p className="font-manrope text-zinc-400">{feature.description}</p>
-          </div>
+            </motion.h3>
+            <motion.p 
+              className="font-manrope text-zinc-400"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.3 + index * 0.1 }}
+            >
+              {feature.description}
+            </motion.p>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const Hero: React.FC = () => {
   return (
@@ -27,24 +28,73 @@ const Hero: React.FC = () => {
         `}</style>
       </div>
       <div className="max-w-4xl mx-auto relative z-10">
-        <h1 className="font-space-grotesk text-5xl md:text-7xl font-bold tracking-tighter mb-6">
-          <span className="text-white">Verschafft isn't just a metaverse,</span>
+        <motion.h1 
+          className="font-space-grotesk text-5xl md:text-7xl font-bold tracking-tighter mb-6"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <motion.span 
+            className="text-white inline-block"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            Verschaft isn't just a metaverse,
+          </motion.span>
           <br />
-          <span className="text-gradient">it's your universe.</span>
-        </h1>
-        <p className="font-manrope text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto mb-10">
+          <motion.span 
+            className="text-gradient inline-block"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
+            it's your universe.
+          </motion.span>
+        </motion.h1>
+        <motion.p 
+          className="font-manrope text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+        >
           Craft your personal 3D space. A unique virtual room that represents
           your identity, your passions, and your digital soul. Your place in the
           metaverse awaits.
-        </p>
-        <div className="flex justify-center">
-          <a
+        </motion.p>
+        <motion.div 
+          className="flex justify-center"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 1 }}
+        >
+          <motion.a
             href="#waitlist"
-            className="font-urbanist text-lg font-semibold text-zinc-900 bg-gradient-to-r from-[#A16EFF] via-[#60F9B8] to-[#00B8FF] px-8 py-4 rounded-full shadow-lg transition-all duration-300 ease-in-out hover:shadow-cyan-400/50 hover:scale-105"
+            className="font-urbanist text-lg font-semibold text-zinc-900 bg-gradient-to-r from-[#A16EFF] via-[#60F9B8] to-[#00B8FF] px-8 py-4 rounded-full shadow-lg"
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 25px 50px -12px rgba(0, 184, 255, 0.5)"
+            }}
+            whileTap={{ scale: 0.95 }}
+            animate={{
+              boxShadow: [
+                "0 20px 25px -5px rgba(161, 110, 255, 0.3)",
+                "0 20px 25px -5px rgba(0, 184, 255, 0.3)",
+                "0 20px 25px -5px rgba(96, 249, 184, 0.3)",
+                "0 20px 25px -5px rgba(161, 110, 255, 0.3)"
+              ]
+            }}
+            transition={{ 
+              boxShadow: { 
+                duration: 3, 
+                repeat: Infinity,
+                ease: "easeInOut"
+              }
+            }}
           >
             Create Your Space
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
       </div>
     </section>
   );
