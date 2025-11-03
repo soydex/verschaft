@@ -82,7 +82,7 @@ const Roadmap: React.FC = () => {
           >
             <div className={`order-1 w-5/12 ${index % 2 === 0 ? 'text-right' : 'text-left'}`}></div>
             <motion.div 
-              className="z-10 flex items-center order-1 bg-zinc-800 shadow-xl w-8 h-8 rounded-full"
+              className="z-10 flex items-center order-1 bg-zinc-900 shadow-xl w-8 h-8 rounded-full"
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
               viewport={{ once: true }}

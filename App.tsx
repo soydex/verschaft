@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 
 const App: React.FC = () => {
   return (
-    <div className="bg-zinc-800 min-h-screen overflow-x-hidden">
+    <div className="bg-zinc-900 min-h-screen overflow-x-hidden">
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
         <motion.div
           className="absolute top-[-20%] left-[-20%] w-[60vw] h-[60vw] bg-gradient-to-tr from-[#a16eff30] to-transparent rounded-full blur-3xl"

@@ -1,1 +1,46 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 400 700;
+  src: url("/fonts/manrope-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 500 700;
+  src: url("/fonts/spacegrotesk-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Urbanist";
+  font-style: normal;
+  font-weight: 600;
+  src: url("/fonts/urbanist-latin.woff2") format("woff2");
+}
+body {
+  font-family: "Manrope", sans-serif;
+  background-color: var(--color-zinc-900);
+  color: var(--color-zinc-400);
+}
+.font-space-grotesk {
+  font-family: "Space Grotesk", sans-serif;
+}
+.font-manrope {
+  font-family: "Manrope", sans-serif;
+}
+.font-urbanist {
+  font-family: "Urbanist", sans-serif;
+}
+.text-gradient {
+  background: linear-gradient(90deg, #a16eff, #60f9b8, #00b8ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.glass-card {
+  background: lch(100% 0.01 296.81 / 0);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
