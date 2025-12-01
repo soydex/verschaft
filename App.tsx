@@ -6,6 +6,8 @@ import Features from "./components/Features";
 import Roadmap from "./components/Roadmap";
 import Vision from "./components/Vision";
 import Footer from "./components/Footer";
+import Newsletter from "./components/Newsletter";
+import FAQ from "./components/FAQ";
 
 const App: React.FC = () => {
   return (
@@ -55,7 +57,7 @@ const App: React.FC = () => {
         ></motion.div>
       </div>
 
-      <motion.div 
+      <motion.div
         className="relative z-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -67,6 +69,8 @@ const App: React.FC = () => {
           <Features />
           <Vision />
           <Roadmap />
+          <FAQ />
+          <Newsletter />
         </main>
         <Footer />
       </motion.div>

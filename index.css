@@ -18,6 +18,10 @@
   font-weight: 600;
   src: url("/fonts/urbanist-latin.woff2") format("woff2");
 }
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Manrope", sans-serif;
   background-color: var(--color-zinc-900);
