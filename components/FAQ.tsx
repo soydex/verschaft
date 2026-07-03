@@ -69,8 +69,11 @@ const FAQ: React.FC = () => {
                                 }`}
                         >
                             <button
+                                id={`faq-question-${index}`}
+                                aria-expanded={activeIndex === index}
+                                aria-controls={`faq-answer-${index}`}
                                 onClick={() => toggleFAQ(index)}
-                                className={`w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none transition-colors ${activeIndex === index ? "bg-white/5" : "hover:bg-white/5"
+                                className={`w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#A16EFF] transition-colors ${activeIndex === index ? "bg-white/5" : "hover:bg-white/5"
                                     }`}
                             >
                                 <span className="font-space-grotesk text-lg font-medium text-white pr-4">
@@ -87,6 +90,9 @@ const FAQ: React.FC = () => {
                             <AnimatePresence>
                                 {activeIndex === index && (
                                     <motion.div
+                                        id={`faq-answer-${index}`}
+                                        role="region"
+                                        aria-labelledby={`faq-question-${index}`}
                                         initial={{ height: 0, opacity: 0 }}
                                         animate={{ height: "auto", opacity: 1 }}
                                         exit={{ height: 0, opacity: 0 }}
