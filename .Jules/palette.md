@@ -1,3 +1,6 @@
 ## 2024-05-15 - FAQ Accordion Accessibility
 **Learning:** Accordion components using `focus:outline-none` hide the default focus outline, making it completely invisible to keyboard users without a fallback. Additionally, mapping `id`, `aria-controls`, and `aria-labelledby` properly is crucial for screen readers to navigate complex UI elements correctly.
 **Action:** Always provide `focus-visible:ring-*` as a fallback for custom components that hide default focus indicators, and ensure all accordion headers and contents are correctly cross-referenced via ARIA attributes.
+## 2025-02-20 - Adding Loading States and Accessibility to Async Forms
+**Learning:** The existing waitlist form lacked feedback during the simulated API call and missed critical accessibility features like `id` and `label` (or `aria-label`). Users might click the submit button multiple times if there is no loading feedback, and screen readers lacked context for the email input.
+**Action:** Always include a `loading` state for forms executing asynchronous operations. In addition to text/spinner feedback, ensure both the submit button and inputs are disabled to prevent duplicate submissions. Lastly, always bind inputs to a `<label>` (can be visually hidden using `sr-only`) with a matching `id` to ensure screen reader accessibility.
