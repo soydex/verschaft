@@ -3,15 +3,18 @@ import { motion } from "framer-motion";
 
 const Newsletter: React.FC = () => {
     const [email, setEmail] = useState("");
-    const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+    const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (email) {
+            setStatus("loading");
             // Simulate API call
-            setStatus("success");
-            setEmail("");
-            setTimeout(() => setStatus("idle"), 3000);
+            setTimeout(() => {
+                setStatus("success");
+                setEmail("");
+                setTimeout(() => setStatus("idle"), 3000);
+            }, 1000);
         }
     };
 
@@ -60,18 +63,21 @@ const Newsletter: React.FC = () => {
                         <input
                             type="email"
                             placeholder="Enter your email"
+                            aria-label="Email address"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
-                            className="flex-1 bg-zinc-900/50 border border-zinc-800 rounded-full px-6 py-4 text-white placeholder-zinc-500 focus:outline-none focus:border-[#A16EFF] transition-colors font-manrope"
+                            disabled={status === "loading" || status === "success"}
+                            className="flex-1 bg-zinc-900/50 border border-zinc-800 rounded-full px-6 py-4 text-white placeholder-zinc-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#A16EFF] transition-colors font-manrope disabled:opacity-50 disabled:cursor-not-allowed"
                         />
                         <motion.button
                             type="submit"
-                            className="font-urbanist font-bold text-zinc-900 bg-gradient-to-r from-[#A16EFF] via-[#60F9B8] to-[#00B8FF] px-8 py-4 rounded-full shadow-lg whitespace-nowrap transition-text duration-300"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
+                            disabled={status === "loading" || status === "success"}
+                            className="font-urbanist font-bold text-zinc-900 bg-gradient-to-r from-[#A16EFF] via-[#60F9B8] to-[#00B8FF] px-8 py-4 rounded-full shadow-lg whitespace-nowrap transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-900 focus-visible:ring-[#60F9B8] disabled:opacity-70 disabled:cursor-not-allowed"
+                            whileHover={status !== "loading" && status !== "success" ? { scale: 1.05 } : {}}
+                            whileTap={status !== "loading" && status !== "success" ? { scale: 0.95 } : {}}
                         >
-                            {status === "success" ? "You're in!" : "Join Now"}
+                            {status === "loading" ? "Joining..." : status === "success" ? "You're in!" : "Join Now"}
                         </motion.button>
                     </motion.form>
                 </motion.div>
