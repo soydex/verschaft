@@ -1,3 +1,3 @@
-## 2024-05-15 - FAQ Accordion Accessibility
-**Learning:** Accordion components using `focus:outline-none` hide the default focus outline, making it completely invisible to keyboard users without a fallback. Additionally, mapping `id`, `aria-controls`, and `aria-labelledby` properly is crucial for screen readers to navigate complex UI elements correctly.
-**Action:** Always provide `focus-visible:ring-*` as a fallback for custom components that hide default focus indicators, and ensure all accordion headers and contents are correctly cross-referenced via ARIA attributes.
+## 2024-05-18 - Framer Motion Transition Types
+**Learning:** In TypeScript, when defining variants for Framer Motion outside of components, the `type` property in `transition` (e.g., `"spring"`) must often be cast `as const` to satisfy TypeScript's strict structural typing. Otherwise, it's inferred as a general `string`, which doesn't match the specific string literals expected by Framer Motion's `AnimationGeneratorType`.
+**Action:** When extracting animation variants into constants, always use `as const` on string literals defining animation types to prevent typing errors.
