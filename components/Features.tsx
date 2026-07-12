@@ -88,7 +88,9 @@ const container = {
   }
 };
 
-const item = {
+import { Variants } from "framer-motion";
+
+const item: Variants = {
   hidden: { opacity: 0, y: 50 },
   show: { 
     opacity: 1, 
