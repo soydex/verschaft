@@ -57,19 +57,27 @@ const Newsletter: React.FC = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.4 }}
                     >
+                        <label htmlFor="newsletter-email" className="sr-only">
+                            Email address
+                        </label>
                         <input
+                            id="newsletter-email"
                             type="email"
                             placeholder="Enter your email"
+                            aria-label="Email address for waitlist"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
-                            className="flex-1 bg-zinc-900/50 border border-zinc-800 rounded-full px-6 py-4 text-white placeholder-zinc-500 focus:outline-none focus:border-[#A16EFF] transition-colors font-manrope"
+                            disabled={status === "success"}
+                            className="flex-1 bg-zinc-900/50 border border-zinc-800 rounded-full px-6 py-4 text-white placeholder-zinc-500 focus:outline-none focus:border-[#A16EFF] transition-colors font-manrope disabled:opacity-50 disabled:cursor-not-allowed"
                         />
                         <motion.button
                             type="submit"
-                            className="font-urbanist font-bold text-zinc-900 bg-gradient-to-r from-[#A16EFF] via-[#60F9B8] to-[#00B8FF] px-8 py-4 rounded-full shadow-lg whitespace-nowrap transition-text duration-300"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
+                            disabled={status === "success"}
+                            aria-label={status === "success" ? "Successfully joined waitlist" : "Join waitlist"}
+                            className="font-urbanist font-bold text-zinc-900 bg-gradient-to-r from-[#A16EFF] via-[#60F9B8] to-[#00B8FF] px-8 py-4 rounded-full shadow-lg whitespace-nowrap transition-text duration-300 disabled:opacity-75 disabled:cursor-not-allowed"
+                            whileHover={status === "success" ? {} : { scale: 1.05 }}
+                            whileTap={status === "success" ? {} : { scale: 0.95 }}
                         >
                             {status === "success" ? "You're in!" : "Join Now"}
                         </motion.button>
