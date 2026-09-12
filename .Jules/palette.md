@@ -1,3 +1,6 @@
 ## 2024-05-15 - FAQ Accordion Accessibility
 **Learning:** Accordion components using `focus:outline-none` hide the default focus outline, making it completely invisible to keyboard users without a fallback. Additionally, mapping `id`, `aria-controls`, and `aria-labelledby` properly is crucial for screen readers to navigate complex UI elements correctly.
 **Action:** Always provide `focus-visible:ring-*` as a fallback for custom components that hide default focus indicators, and ensure all accordion headers and contents are correctly cross-referenced via ARIA attributes.
+## 2024-05-15 - Newsletter Form Accessibility & Loading States
+**Learning:** Screen readers require a programmatically associated label (like a visually-hidden `<label>` element with `htmlFor` matching the input `id`) even when placeholder text visually implies the input's purpose. Additionally, adding disabled styles and preventing hover/tap animations during asynchronous states (like loading or success) significantly clarifies form states and prevents accidental double-submissions which is critical for good UX.
+**Action:** When creating forms, always ensure explicit `id` and `htmlFor` pairing with `sr-only` labels if visible labels break the design. Always manage `disabled` states alongside Framer Motion interactions to prevent disjointed feedback during loading.
