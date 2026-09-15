@@ -57,19 +57,25 @@ const Newsletter: React.FC = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.4 }}
                     >
+                        <label htmlFor="newsletter-email" className="sr-only">
+                            Email address
+                        </label>
                         <input
+                            id="newsletter-email"
                             type="email"
                             placeholder="Enter your email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
-                            className="flex-1 bg-zinc-900/50 border border-zinc-800 rounded-full px-6 py-4 text-white placeholder-zinc-500 focus:outline-none focus:border-[#A16EFF] transition-colors font-manrope"
+                            className="flex-1 bg-zinc-900/50 border border-zinc-800 rounded-full px-6 py-4 text-white placeholder-zinc-500 focus:outline-none focus:border-[#A16EFF] focus-visible:ring-2 focus-visible:ring-[#A16EFF] transition-colors font-manrope"
                         />
                         <motion.button
                             type="submit"
-                            className="font-urbanist font-bold text-zinc-900 bg-gradient-to-r from-[#A16EFF] via-[#60F9B8] to-[#00B8FF] px-8 py-4 rounded-full shadow-lg whitespace-nowrap transition-text duration-300"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
+                            disabled={status === "success"}
+                            aria-live="polite"
+                            className="font-urbanist font-bold text-zinc-900 bg-gradient-to-r from-[#A16EFF] via-[#60F9B8] to-[#00B8FF] px-8 py-4 rounded-full shadow-lg whitespace-nowrap transition-text duration-300 disabled:opacity-80 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-900 focus-visible:ring-[#A16EFF]"
+                            whileHover={status === "success" ? {} : { scale: 1.05 }}
+                            whileTap={status === "success" ? {} : { scale: 0.95 }}
                         >
                             {status === "success" ? "You're in!" : "Join Now"}
                         </motion.button>
