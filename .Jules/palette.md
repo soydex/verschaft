@@ -1,3 +1,7 @@
 ## 2024-05-15 - FAQ Accordion Accessibility
 **Learning:** Accordion components using `focus:outline-none` hide the default focus outline, making it completely invisible to keyboard users without a fallback. Additionally, mapping `id`, `aria-controls`, and `aria-labelledby` properly is crucial for screen readers to navigate complex UI elements correctly.
 **Action:** Always provide `focus-visible:ring-*` as a fallback for custom components that hide default focus indicators, and ensure all accordion headers and contents are correctly cross-referenced via ARIA attributes.
+
+## 2026-09-16 - Gradient Button Focus Accessibility
+**Learning:** Interactive gradient components often lack clear focus states due to overlapping styles and animations. Applying standard focus classes may not be enough if offsets aren't considered against dark backgrounds. Also, waitlist forms typically have visually hidden labels which fail accessibility guidelines without explicit ARIA labels.
+**Action:** Use `focus-visible:ring-offset-[#18181b]` (matching dark background) with a high-contrast `focus-visible:ring-white` on gradient buttons to ensure keyboard users can perceive focus. Always add `aria-label` to inputs when a visible `<label>` element is intentionally omitted for design reasons.
