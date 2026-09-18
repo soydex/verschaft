@@ -25,7 +25,7 @@ const Header: React.FC = () => {
           </motion.div>
           <motion.a
             href="#waitlist"
-            className="font-urbanist font-semibold text-zinc-900 bg-gradient-to-r from-[#A16EFF] via-[#60F9B8] to-[#00B8FF] px-6 py-2 rounded-full shadow-lg"
+            className="font-urbanist font-semibold text-zinc-900 bg-gradient-to-r from-[#A16EFF] via-[#60F9B8] to-[#00B8FF] px-6 py-2 rounded-full shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#18181b]"
             whileHover={{
               scale: 1.05,
               boxShadow:

@@ -85,7 +85,7 @@ const Hero: React.FC = () => {
                   }
                 }
               }}
-              className="font-urbanist text-lg font-semibold text-zinc-900 bg-gradient-to-r from-[#A16EFF] via-[#60F9B8] to-[#00B8FF] px-8 py-4 rounded-full shadow-lg"
+              className="font-urbanist text-lg font-semibold text-zinc-900 bg-gradient-to-r from-[#A16EFF] via-[#60F9B8] to-[#00B8FF] px-8 py-4 rounded-full shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#18181b]"
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0 25px 50px -12px rgba(0, 184, 255, 0.5)"

@@ -60,6 +60,7 @@ const Newsletter: React.FC = () => {
                         <input
                             type="email"
                             placeholder="Enter your email"
+                            aria-label="Email address"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
@@ -67,7 +68,7 @@ const Newsletter: React.FC = () => {
                         />
                         <motion.button
                             type="submit"
-                            className="font-urbanist font-bold text-zinc-900 bg-gradient-to-r from-[#A16EFF] via-[#60F9B8] to-[#00B8FF] px-8 py-4 rounded-full shadow-lg whitespace-nowrap transition-text duration-300"
+                            className="font-urbanist font-bold text-zinc-900 bg-gradient-to-r from-[#A16EFF] via-[#60F9B8] to-[#00B8FF] px-8 py-4 rounded-full shadow-lg whitespace-nowrap transition-text duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#18181b]"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
