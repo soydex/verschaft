@@ -3,15 +3,18 @@ import { motion } from "framer-motion";
 
 const Newsletter: React.FC = () => {
     const [email, setEmail] = useState("");
-    const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+    const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (email) {
+            setStatus("loading");
             // Simulate API call
-            setStatus("success");
-            setEmail("");
-            setTimeout(() => setStatus("idle"), 3000);
+            setTimeout(() => {
+                setStatus("success");
+                setEmail("");
+                setTimeout(() => setStatus("idle"), 3000);
+            }, 1500);
         }
     };
 
@@ -57,21 +60,36 @@ const Newsletter: React.FC = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.4 }}
                     >
+                        <label htmlFor="email-input" className="sr-only">
+                            Email Address
+                        </label>
                         <input
+                            id="email-input"
                             type="email"
                             placeholder="Enter your email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
-                            className="flex-1 bg-zinc-900/50 border border-zinc-800 rounded-full px-6 py-4 text-white placeholder-zinc-500 focus:outline-none focus:border-[#A16EFF] transition-colors font-manrope"
+                            disabled={status === "loading" || status === "success"}
+                            className="flex-1 bg-zinc-900/50 border border-zinc-800 rounded-full px-6 py-4 text-white placeholder-zinc-500 focus:outline-none focus:border-[#A16EFF] disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-manrope"
                         />
                         <motion.button
                             type="submit"
-                            className="font-urbanist font-bold text-zinc-900 bg-gradient-to-r from-[#A16EFF] via-[#60F9B8] to-[#00B8FF] px-8 py-4 rounded-full shadow-lg whitespace-nowrap transition-text duration-300"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
+                            disabled={status === "loading" || status === "success"}
+                            className="flex items-center justify-center font-urbanist font-bold text-zinc-900 bg-gradient-to-r from-[#A16EFF] via-[#60F9B8] to-[#00B8FF] px-8 py-4 rounded-full shadow-lg whitespace-nowrap transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#18181b] disabled:opacity-50 disabled:cursor-not-allowed min-w-[140px]"
+                            whileHover={status === "idle" || status === "error" ? { scale: 1.05 } : {}}
+                            whileTap={status === "idle" || status === "error" ? { scale: 0.95 } : {}}
                         >
-                            {status === "success" ? "You're in!" : "Join Now"}
+                            {status === "loading" ? (
+                                <svg className="animate-spin h-5 w-5 text-zinc-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                            ) : status === "success" ? (
+                                "You're in!"
+                            ) : (
+                                "Join Now"
+                            )}
                         </motion.button>
                     </motion.form>
                 </motion.div>
